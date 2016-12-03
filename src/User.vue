@@ -1,5 +1,5 @@
 <template>
   <div>
-    @mamow
+    @{{$route.params.username}}
   </div>
 </template>

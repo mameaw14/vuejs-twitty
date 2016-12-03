@@ -1,6 +1,8 @@
 <template>
   <div>
-    <tweet></tweet>
+    <tweet username="EiEiz"></tweet>
+    <tweet username="Manow"></tweet>
+    <tweet username="Cat"></tweet>
   </div>
 </template>
 <script>
