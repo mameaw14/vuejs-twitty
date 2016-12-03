@@ -2,8 +2,6 @@
 
 > homework component
 
-link: <https://mameaw14.github.io/vuejs-twitty/>
-
 ## Build Setup
 
 ``` bash
