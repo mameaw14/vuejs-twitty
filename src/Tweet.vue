@@ -16,7 +16,7 @@ export default {
   props: [
     'username'
   ],
-  data() {
+  data () {
     return {
       text: 'test'
     }

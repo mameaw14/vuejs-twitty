@@ -3,6 +3,22 @@
     <router-link to="/">Twittez</router-link>
   </div>
 </template>
+
+<script>
+import firebase from 'firebase'
+
+export default {
+  data: () => ({
+    currentUser: null
+  }),
+  created () {
+    const auth = firebase.auth()
+    auth.onAuthStateChanged((user) => {
+      console.log('current user: ' + user)
+    })
+  }
+}
+</script>
 <style scoped>
   div{
     background-color: #eee;
