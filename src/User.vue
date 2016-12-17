@@ -11,7 +11,7 @@
         id: 0
       }
     },
-    create () {
+    created () {
       this.reload()
     },
     watch: {

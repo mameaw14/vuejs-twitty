@@ -1,6 +1,9 @@
 <template>
   <div>
     <router-link to="/">Twittez</router-link>
+    <router-link v-if="!currentUser" to="/signin">signin</router-link>
+    <router-link v-if="currentUser" to="/profile">profile</router-link>
+    <button v-if="currentUser" @click="signOut"> logout</button>
   </div>
 </template>
 
@@ -11,23 +14,20 @@ export default {
   data: () => ({
     currentUser: null
   }),
+  methods: {
+    signOut () {
+      firebase.auth().signOut()
+      this.$router.push('/')
+    }
+  },
   created () {
     const auth = firebase.auth()
     auth.onAuthStateChanged((user) => {
+      this.currentUser = user
       console.log('current user: ' + user)
     })
   }
 }
 </script>
 <style scoped>
-  div{
-    background-color: #eee;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px;
-    margin: 0;
-    margin-bottom: 14px;
-  }
 </style>

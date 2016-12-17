@@ -8,11 +8,11 @@ import '!script-loader!semantic-ui-css/semantic.min.js'
 import '!style-loader!css-loader!semantic-ui-css/semantic.min.css'
 
 firebase.initializeApp({
-  apiKey: 'IzaSyD9Broec3UxW4mgI3Dc4EauEXCnny76udo',
-  authDomain: 'witty-vuejs.firebaseapp.com',
-  databaseURL: 'ttps://twitty-vuejs.firebaseio.com',
-  storageBucket: 'witty-vuejs.appspot.com',
-  messagingSenderId: '07990047697'
+  apiKey: 'AIzaSyD9Broec3UxW4mgI3Dc4EauEXCnny76udo',
+  authDomain: 'twitty-vuejs.firebaseapp.com',
+  databaseURL: 'https://twitty-vuejs.firebaseio.com',
+  storageBucket: 'twitty-vuejs.appspot.com',
+  messagingSenderId: '307990047697'
 })
 /* eslint-disable no-new */
 new Vue({
