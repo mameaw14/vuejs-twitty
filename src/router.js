@@ -4,6 +4,7 @@ import Home from './Home.vue'
 import Profile from './Profile.vue'
 import Signin from './Signin.vue'
 import User from './User.vue'
+import ProfileEdit from './ProfileEdit'
 import firebase from 'firebase'
 
 Vue.use(VueRouter)
@@ -13,6 +14,7 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Home },
     { path: '/profile', component: Profile, meta: { requiresAuth: true } },
+    { path: '/profile/edit', component: ProfileEdit, meta: { requiresAuth: true } },
     { path: '/user/:username', name: 'user', component: User },
     { path: '/signin', component: Signin },
     { path: '*', redirect: '/' }

@@ -1,5 +1,14 @@
 <template>
-  <div>
-    Profile
+  <div class="ui segment">
+    <h3>Profile</h3>
+    <h4>name</h4> {{profile.name}}
+    <h4>description</h4> {{profile.description}}
+    <br><br>
+    <router-link to="edit" append class"ui green button">Edit</router-link>
   </div>
 </template>
+
+<script>
+export default {
+}
+</script>
