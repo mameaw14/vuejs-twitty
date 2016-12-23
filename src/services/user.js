@@ -1,9 +1,11 @@
 import firebase from 'firebase'
 
 const get = (id, callback) => {
-  firebase.database()
+  return firebase.database()
     .ref(`user/${id}`)
-    .once('value', callback)
+    .once('value', (snapshot) => {
+      callback(snapshot.val())
+    })
 }
 
 export default {

@@ -14,6 +14,7 @@ export default {
         next(to.query.redirect || '/')
         return
       }
+      next()
     })
   },
   methods: {
