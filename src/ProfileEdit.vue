@@ -7,7 +7,7 @@
 </template>
 <script>
   import ProfileForm from './ProfileForm'
-  import firebase from 'firebase'
+  import { Me } from './services'
 
   export default {
     components: {
@@ -20,23 +20,13 @@
       }
     }),
     created () {
-      const userId = firebase.auth().currentUser.uid
-      firebase.database()
-        .ref(`user/${userId}`)
-        .once('value', (snapshot) => {
-          this.profile = snapshot.val()
-        })
+      Me.get((data) => {
+        this.profile = data
+      })
     },
     methods: {
       save () {
-        const userId = firebase.auth().currentUser.uid
-        console.log(userId)
-        firebase.database()
-          .ref(`user/${userId}`)
-          .set(this.profile)
-          .then(() => {
-            this.back()
-          })
+        Me.set(this.profile)
       },
       back () {
         this.$router.push('/profile')

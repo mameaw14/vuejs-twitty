@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { User, Auth } from './services'
+import { Me } from './services'
 export default {
   data: () => ({
     profile: {
@@ -18,8 +18,7 @@ export default {
     }
   }),
   created () {
-    console.log('in')
-    User.get(Auth.getCurrentUser().uid, (data) => {
+    Me.get((data) => {
       this.profile = data
     })
   }

@@ -8,6 +8,13 @@ const get = (id, callback) => {
     })
 }
 
+const set = (id, data) => {
+  return firebase.database()
+    .ref(`user/${id}`)
+    .set(data)
+}
+
 export default {
-  get
+  get,
+  set
 }
