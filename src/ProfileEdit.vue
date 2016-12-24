@@ -2,7 +2,6 @@
   <div class="ui segment">
     <h3>profile edit</h3>
     <profile-form v-model="profile" @save="save" @cancel="back"></profile-form>
-    {{profile}}
   </div>
 </template>
 <script>
