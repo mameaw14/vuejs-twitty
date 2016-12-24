@@ -13,8 +13,12 @@ const requireUser = () => {
     })
   })
 }
+const signIn = () => {
+  return firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+}
 
 export default {
   getCurrentUser,
-  requireUser
+  requireUser,
+  signIn
 }

@@ -5,25 +5,23 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import { Auth } from './services'
 export default {
   beforeRouteEnter (to, from, next) {
-    const cancel = firebase.auth().onAuthStateChanged((user) => {
-      cancel()
-      if (user) {
+    Auth.requireUser()
+      .then(() => {
         next(to.query.redirect || '/')
-        return
-      }
-      next()
-    })
+      }, () => {
+        next()
+      })
+    return
   },
   methods: {
     signIn () {
-      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
-          .then((res) => {
-            this.$router.replace(this.$route.query.redirect || '/')
-          })
-      console.log('sign in')
+      Auth.signIn()
+        .then((res) => {
+          return this.$router.replace(this.$route.query.redirect || '/')
+        })
     }
   }
 }

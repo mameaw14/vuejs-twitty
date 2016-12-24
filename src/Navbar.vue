@@ -24,7 +24,7 @@ export default {
     const auth = firebase.auth()
     auth.onAuthStateChanged((user) => {
       this.currentUser = user
-      console.log('current user: ' + user)
+      console.log('current user: ' + user.uid)
     })
   }
 }

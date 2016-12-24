@@ -1,26 +1,34 @@
 <template>
   <div>
     @{{$route.params.username}}
+    <profile-detail v-if="data" :profile="data"></profile-detail>
   </div>
 </template>
-
 <script>
-  export default {
-    data () {
-      return {
-        id: 0
-      }
-    },
-    created () {
-      this.reload()
-    },
-    watch: {
-      $route: 'reload'
-    },
-    methods: {
-      reload () {
-        this.id = +this.$route.params.id
-      }
+import { User } from './services'
+import ProfileDetail from './ProfileDetail'
+
+export default {
+  components: {
+    ProfileDetail
+  },
+  data () {
+    return {
+      data: null
+    }
+  },
+  created () {
+    this.reload()
+  },
+  watch: {
+    $route: 'reload'
+  },
+  methods: {
+    reload () {
+      User.subscribe(this.$route.params.username, (data) => {
+        this.data = data
+      })
     }
   }
+}
 </script>

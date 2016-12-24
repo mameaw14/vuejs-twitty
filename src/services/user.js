@@ -1,10 +1,11 @@
 import firebase from 'firebase'
 
-const get = (id, callback) => {
+const get = (id) => {
   return firebase.database()
     .ref(`user/${id}`)
-    .once('value', (snapshot) => {
-      callback(snapshot.val())
+    .once('value')
+    .then((snapshot) => {
+      return snapshot.val()
     })
 }
 
@@ -14,7 +15,16 @@ const set = (id, data) => {
     .set(data)
 }
 
+const subscribe = (id, callback) => {
+  return firebase.database()
+    .ref(`user/${id}`)
+    .on('value', (snapshot) => {
+      callback(snapshot.val())
+    })
+}
+
 export default {
   get,
-  set
+  set,
+  subscribe
 }

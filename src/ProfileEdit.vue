@@ -20,13 +20,19 @@
       }
     }),
     created () {
-      Me.get((data) => {
-        this.profile = data
+      Me.get()
+      .then((data) => {
+        if (data) {
+          this.profile = data
+        }
       })
     },
     methods: {
       save () {
         Me.set(this.profile)
+        .then(() => {
+          this.back()
+        })
       },
       back () {
         this.$router.push('/profile')

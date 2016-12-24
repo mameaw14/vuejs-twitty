@@ -11,6 +11,16 @@
 <script>
 import { Me } from './services'
 export default {
+  beforeRouteEnter (to, from, next) {
+    Me.get()
+      .then((data) => {
+        if (data) {
+          next()
+          return
+        }
+        next('profile/edit')
+      })
+  },
   data: () => ({
     profile: {
       name: '',
@@ -18,7 +28,8 @@ export default {
     }
   }),
   created () {
-    Me.get((data) => {
+    Me.get()
+    .then((data) => {
       this.profile = data
     })
   }
