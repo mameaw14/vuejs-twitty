@@ -5,7 +5,7 @@ import Profile from './Profile.vue'
 import Signin from './Signin.vue'
 import User from './User.vue'
 import ProfileEdit from './ProfileEdit'
-import firebase from 'firebase'
+import { Auth } from './services'
 
 Vue.use(VueRouter)
 
@@ -22,16 +22,13 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(firebase.auth().currentUser)
   if (to.matched.some((x) => x.meta.requiresAuth)) {
-    const cancel = firebase.auth().onAuthStateChanged((user) => {
-      cancel()
-      if (user) {
+    Auth.requireUser()
+      .then(() => {
         next()
-        return
-      }
-      next({ path: '/signin', query: { redirect: to.fullPath } })
-    })
+      }, () => {
+        next({ path: '/signin', query: { redirect: to.fullPath } })
+      })
     return
   }
   next()
