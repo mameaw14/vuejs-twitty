@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import firebase from 'firebase'
+import moment from 'moment'
 
 import '!script-loader!jquery/dist/jquery.min.js'
 import '!script-loader!semantic-ui-css/semantic.min.js'
@@ -14,6 +15,21 @@ firebase.initializeApp({
   storageBucket: 'twitty-vuejs.appspot.com',
   messagingSenderId: '307990047697'
 })
+const ticker = new Vue({
+  data: () => ({
+    tick: 0
+  }),
+  created () {
+    setInterval(() => {
+      this.tick = Date.now()
+    }, 1000)
+  }
+})
+Vue.filter('fromNow', (value) => {
+  ticker.tick
+  return moment(value).fromNow()
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

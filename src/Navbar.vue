@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <router-link to="/">Twittez</router-link>
-    <router-link v-if="!currentUser" to="/signin">signin</router-link>
-    <router-link v-if="currentUser" to="/profile">profile</router-link>
-    <button v-if="currentUser" @click="signOut"> logout</button>
+  <div class="ui menu">
+    <router-link to="/" class="item">Vue-Twitty</router-link>
+    <router-link v-if="!currentUser" to="/signin" class="item">signin</router-link>
+    <router-link v-if="currentUser" to="/profile" class="item">Profile</router-link>
+    <a v-if="currentUser" @click="signOut" class="item right"> Logout</a>
   </div>
 </template>
 

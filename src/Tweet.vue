@@ -1,8 +1,8 @@
 <template>
   <div id="tweet">
-    <router-link :to="{name: 'user', params: {username: username} }"><b>@{{username}}</b> </router-link>
-    {{text}}
-    <div id="time">1m</div>
+    <router-link :to="{name: 'user', params: {username: data.owner} }"><b>@{{data.owner}}</b> </router-link>
+    {{data.content}}
+    <div id="time">{{data.timestamp | fromNow}}</div>
     <div>
       <a href="#">Reply</a> 
       <a href="#">RT</a>
@@ -14,7 +14,7 @@
 <script>
 export default {
   props: [
-    'username'
+    'data'
   ],
   data () {
     return {
